@@ -7,8 +7,8 @@ package fd
 import (
 	"sync"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/mat"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/mat"
 )
 
 type JacobianSettings struct {

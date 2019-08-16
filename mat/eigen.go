@@ -5,8 +5,8 @@
 package mat
 
 import (
-	"gonum.org/v1/gonum/lapack"
-	"gonum.org/v1/gonum/lapack/lapack64"
+	"github.com/savalin/gonum/lapack"
+	"github.com/savalin/gonum/lapack/lapack64"
 )
 
 const (

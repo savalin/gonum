@@ -7,8 +7,8 @@ package barneshut_test
 import (
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/spatial/barneshut"
-	"gonum.org/v1/gonum/spatial/r2"
+	"github.com/savalin/gonum/spatial/barneshut"
+	"github.com/savalin/gonum/spatial/r2"
 )
 
 type mass struct {

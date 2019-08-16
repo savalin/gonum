@@ -7,8 +7,8 @@ package stat_test
 import (
 	"fmt"
 
-	"gonum.org/v1/gonum/mat"
-	"gonum.org/v1/gonum/stat"
+	"github.com/savalin/gonum/mat"
+	"github.com/savalin/gonum/stat"
 )
 
 func ExamplePC() {

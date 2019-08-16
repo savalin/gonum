@@ -7,8 +7,8 @@ package path
 import (
 	"container/heap"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/set"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/set"
 )
 
 // AStar finds the A*-shortest path from s to t in g using the heuristic h. The path and

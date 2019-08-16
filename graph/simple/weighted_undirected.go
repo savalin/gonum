@@ -7,9 +7,9 @@ package simple
 import (
 	"fmt"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/uid"
-	"gonum.org/v1/gonum/graph/iterator"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/uid"
+	"github.com/savalin/gonum/graph/iterator"
 )
 
 var (

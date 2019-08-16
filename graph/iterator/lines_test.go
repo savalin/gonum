@@ -8,9 +8,9 @@ import (
 	"reflect"
 	"testing"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/iterator"
-	"gonum.org/v1/gonum/graph/simple"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/iterator"
+	"github.com/savalin/gonum/graph/simple"
 )
 
 type line struct{ f, t int }

@@ -7,8 +7,8 @@ package mds
 import (
 	"math"
 
-	"gonum.org/v1/gonum/blas/blas64"
-	"gonum.org/v1/gonum/mat"
+	"github.com/savalin/gonum/blas/blas64"
+	"github.com/savalin/gonum/mat"
 )
 
 // TorgersonScaling converts a dissimilarity matrix to a matrix containing

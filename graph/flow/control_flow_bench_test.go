@@ -15,13 +15,13 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/encoding"
-	"gonum.org/v1/gonum/graph/encoding/dot"
-	"gonum.org/v1/gonum/graph/graphs/gen"
-	"gonum.org/v1/gonum/graph/iterator"
-	"gonum.org/v1/gonum/graph/simple"
-	"gonum.org/v1/gonum/graph/topo"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/encoding"
+	"github.com/savalin/gonum/graph/encoding/dot"
+	"github.com/savalin/gonum/graph/graphs/gen"
+	"github.com/savalin/gonum/graph/iterator"
+	"github.com/savalin/gonum/graph/simple"
+	"github.com/savalin/gonum/graph/topo"
 )
 
 var slta = flag.Bool("slta", false, "specify DominatorsSLT benchmark")

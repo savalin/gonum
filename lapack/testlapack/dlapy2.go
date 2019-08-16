@@ -10,7 +10,7 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/floats"
+	"github.com/savalin/gonum/floats"
 )
 
 type Dlapy2er interface {

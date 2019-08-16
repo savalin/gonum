@@ -9,10 +9,10 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/mat"
-	"gonum.org/v1/gonum/stat"
-	"gonum.org/v1/gonum/stat/distuv"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/mat"
+	"github.com/savalin/gonum/stat"
+	"github.com/savalin/gonum/stat/distuv"
 )
 
 var (

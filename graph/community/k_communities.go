@@ -5,11 +5,11 @@
 package community
 
 import (
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/set"
-	"gonum.org/v1/gonum/graph/simple"
-	"gonum.org/v1/gonum/graph/topo"
-	"gonum.org/v1/gonum/graph/traverse"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/set"
+	"github.com/savalin/gonum/graph/simple"
+	"github.com/savalin/gonum/graph/topo"
+	"github.com/savalin/gonum/graph/traverse"
 )
 
 // KCliqueCommunities returns the k-clique communties of the undirected graph g for

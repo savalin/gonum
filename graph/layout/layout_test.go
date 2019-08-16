@@ -17,11 +17,11 @@ import (
 	"strings"
 	"testing"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/encoding"
-	"gonum.org/v1/gonum/graph/internal/ordered"
-	"gonum.org/v1/gonum/graph/iterator"
-	"gonum.org/v1/gonum/spatial/r2"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/encoding"
+	"github.com/savalin/gonum/graph/internal/ordered"
+	"github.com/savalin/gonum/graph/iterator"
+	"github.com/savalin/gonum/spatial/r2"
 	"gonum.org/v1/plot/cmpimg"
 )
 

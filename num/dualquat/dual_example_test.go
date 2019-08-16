@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"math"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/num/dualquat"
-	"gonum.org/v1/gonum/num/quat"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/num/dualquat"
+	"github.com/savalin/gonum/num/quat"
 )
 
 // point is a 3-dimensional point/vector.

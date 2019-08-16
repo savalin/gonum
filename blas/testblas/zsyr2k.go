@@ -10,7 +10,7 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/blas"
+	"github.com/savalin/gonum/blas"
 )
 
 type Zsyr2ker interface {

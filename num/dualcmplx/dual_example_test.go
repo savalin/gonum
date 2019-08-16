@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"math"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/num/dualcmplx"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/num/dualcmplx"
 )
 
 // point is a 2-dimensional point/vector.

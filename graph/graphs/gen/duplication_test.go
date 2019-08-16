@@ -7,8 +7,8 @@ package gen
 import (
 	"testing"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/simple"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/simple"
 )
 
 type duplication struct {

@@ -12,9 +12,9 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/ordered"
-	"gonum.org/v1/gonum/graph/simple"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/ordered"
+	"github.com/savalin/gonum/graph/simple"
 )
 
 func ExampleProfile_simple() {

@@ -9,11 +9,11 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/ordered"
-	"gonum.org/v1/gonum/graph/internal/set"
-	"gonum.org/v1/gonum/mat"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/ordered"
+	"github.com/savalin/gonum/graph/internal/set"
+	"github.com/savalin/gonum/mat"
 )
 
 // Shortest is a shortest-path tree created by the BellmanFordFrom or DijkstraFrom

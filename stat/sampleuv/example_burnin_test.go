@@ -4,7 +4,7 @@
 
 package sampleuv
 
-import "gonum.org/v1/gonum/stat/distuv"
+import "github.com/savalin/gonum/stat/distuv"
 
 type ProposalDist struct {
 	Sigma float64

@@ -13,7 +13,7 @@ import (
 	"math"
 	"testing"
 
-	"gonum.org/v1/gonum/blas/blas64"
+	"github.com/savalin/gonum/blas/blas64"
 )
 
 var (

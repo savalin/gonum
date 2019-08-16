@@ -8,9 +8,9 @@ import (
 	"math"
 	"testing"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/integrate/quad"
-	"gonum.org/v1/gonum/stat"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/integrate/quad"
+	"github.com/savalin/gonum/stat"
 )
 
 type meaner interface {

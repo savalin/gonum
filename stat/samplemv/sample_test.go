@@ -10,11 +10,11 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/mat"
-	"gonum.org/v1/gonum/spatial/r1"
-	"gonum.org/v1/gonum/stat"
-	"gonum.org/v1/gonum/stat/distmv"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/mat"
+	"github.com/savalin/gonum/spatial/r1"
+	"github.com/savalin/gonum/stat"
+	"github.com/savalin/gonum/stat/distmv"
 )
 
 type lhDist interface {

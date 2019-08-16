@@ -7,7 +7,7 @@ package testlapack
 import (
 	"testing"
 
-	"gonum.org/v1/gonum/floats"
+	"github.com/savalin/gonum/floats"
 )
 
 type Dlasq3er interface {

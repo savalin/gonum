@@ -11,9 +11,9 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/blas/blas64"
-	"gonum.org/v1/gonum/floats"
-	"gonum.org/v1/gonum/lapack"
+	"github.com/savalin/gonum/blas/blas64"
+	"github.com/savalin/gonum/floats"
+	"github.com/savalin/gonum/lapack"
 )
 
 type Dtrevc3er interface {
