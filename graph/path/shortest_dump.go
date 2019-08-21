@@ -3,7 +3,6 @@ package path
 import (
 	"encoding/json"
 	"errors"
-	"fmt"
 	"math"
 	"reflect"
 
@@ -64,10 +63,7 @@ func (d *allShortestDumperV1) Marshal(g *AllShortest) ([]byte, error) {
 		data := make([]float64, dataField.Len())
 		for i := 0; i < dataField.Len(); i++ {
 			val := dataField.Index(i).Float()
-			if val < 0 {
-				fmt.Printf("DATA < 0 FOUND %d\n", val)
-			} else if val == math.Inf(1) {
-				//fmt.Printf("DATA MAX FOUND\n")
+			if val == math.Inf(1) {
 				val = -1
 			}
 			data[i] = val
