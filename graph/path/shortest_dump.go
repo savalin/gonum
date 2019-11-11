@@ -26,33 +26,36 @@ func (g *AllShortest) Marshal() ([]byte, error) {
 
 const allShortestDumperVersion1 = 1
 
-type allShortestDumperV1 struct {
+type allShortestDumperV1 struct {}
+type allShortestDump struct {
 	Version int
 	Nodes   []int64
 	IndexOf map[int64]int
-	Dist    *dense
+	Dist    *Dense
 	Next    [][]int
 	Forward bool
 }
 
 // Dense is a dense matrix representation.
-type dense struct {
+type Dense struct {
 	Mat blas64.General
 
 	CapRows, CapCols int
 }
 
 func (d *allShortestDumperV1) Marshal(g *AllShortest) ([]byte, error) {
-	d.Version = allShortestDumperVersion1
+	var dump = &allShortestDump{}
 
-	d.Nodes = make([]int64, len(g.nodes))
+	dump.Version = allShortestDumperVersion1
+
+	dump.Nodes = make([]int64, len(g.nodes))
 	for i, node := range g.nodes {
-		d.Nodes[i] = node.ID()
+		dump.Nodes[i] = node.ID()
 	}
 
-	d.IndexOf = make(map[int64]int, len(g.indexOf))
+	dump.IndexOf = make(map[int64]int, len(g.indexOf))
 	for k, v := range g.indexOf {
-		d.IndexOf[k] = v
+		dump.IndexOf[k] = v
 	}
 
 	if g.dist != nil {
@@ -69,7 +72,7 @@ func (d *allShortestDumperV1) Marshal(g *AllShortest) ([]byte, error) {
 			data[i] = val
 		}
 
-		d.Dist = &dense{
+		dump.Dist = &Dense{
 			Mat: blas64.General{
 
 				Rows:   int(mat.FieldByName("Rows").Int()),
@@ -83,46 +86,47 @@ func (d *allShortestDumperV1) Marshal(g *AllShortest) ([]byte, error) {
 		}
 	}
 
-	d.Next = make([][]int, len(g.next))
+	dump.Next = make([][]int, len(g.next))
 	for i, s := range g.next {
-		d.Next[i] = s
+		dump.Next[i] = s
 	}
 
-	d.Forward = g.forward
+	dump.Forward = g.forward
 
-	return json.Marshal(d)
+	return json.Marshal(dump)
 }
 
 func (d *allShortestDumperV1) Unmarshal(data []byte) (result AllShortest, err error) {
-	if err = json.Unmarshal(data, d); err != nil {
+	var dump = &allShortestDump{}
+	if err = json.Unmarshal(data, dump); err != nil {
 		return
 	}
 
-	if d.Version != allShortestDumperVersion1 {
+	if dump.Version != allShortestDumperVersion1 {
 		err = errors.New("dump marshaled by other dumper version")
 		return
 	}
 
-	result.indexOf = d.IndexOf
-	result.next = d.Next
-	result.forward = d.Forward
+	result.indexOf = dump.IndexOf
+	result.next = dump.Next
+	result.forward = dump.Forward
 
-	result.nodes = make([]graph.Node, len(d.Nodes))
-	for i, node := range d.Nodes {
+	result.nodes = make([]graph.Node, len(dump.Nodes))
+	for i, node := range dump.Nodes {
 		result.nodes[i] = simple.Node(node)
 	}
 
-	if d.Dist != nil {
-		for i, v := range d.Dist.Mat.Data {
+	if dump.Dist != nil {
+		for i, v := range dump.Dist.Mat.Data {
 			if v == -1 {
-				d.Dist.Mat.Data[i] = math.Inf(1)
+				dump.Dist.Mat.Data[i] = math.Inf(1)
 			}
 		}
 
 		result.dist = mat.NewDense(
-			d.Dist.CapRows,
-			d.Dist.CapCols,
-			d.Dist.Mat.Data,
+			dump.Dist.CapRows,
+			dump.Dist.CapCols,
+			dump.Dist.Mat.Data,
 		)
 	}
 
