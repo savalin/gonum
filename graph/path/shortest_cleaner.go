@@ -7,6 +7,9 @@ func (p AllShortest) Flush() {
 	}
 
 	p.nodes = nil
+	for k := range p.indexOf {
+		delete(p.indexOf, k)
+	}
 	p.indexOf = nil
 	p.next = nil
 }

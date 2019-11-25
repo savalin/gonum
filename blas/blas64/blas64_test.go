@@ -8,8 +8,8 @@ import (
 	"fmt"
 	"testing"
 
-	"gonum.org/v1/gonum/blas"
-	"gonum.org/v1/gonum/blas/testblas"
+	"github.com/savalin/gonum/blas"
+	"github.com/savalin/gonum/blas/testblas"
 )
 
 var impl = b64{}

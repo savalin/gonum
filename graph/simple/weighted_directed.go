@@ -283,3 +283,34 @@ func (g *WeightedDirectedGraph) WeightedEdges() graph.WeightedEdges {
 	}
 	return iterator.NewOrderedWeightedEdges(edges)
 }
+
+func (g *WeightedDirectedGraph) Flush() {
+	if g == nil {
+		fmt.Println("WeightedDirectedGraph: flush skipped")
+		return
+	}
+
+	for k := range g.nodes {
+		delete(g.nodes, k)
+	}
+	g.nodes = nil
+
+	for k1, v1 := range g.from {
+		for k2 := range v1 {
+			delete(v1, k2)
+		}
+		delete(g.from, k1)
+	}
+	g.from = nil
+
+	for k1, v1 := range g.to {
+		for k2 := range v1 {
+			delete(v1, k2)
+		}
+		delete(g.to, k1)
+	}
+	g.to = nil
+
+	g.nodeIDs.Flush()
+	fmt.Println("WeightedDirectedGraph.Flush()")
+}

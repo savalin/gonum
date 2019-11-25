@@ -5,7 +5,10 @@
 // Package uid implements unique ID provision for graphs.
 package uid
 
-import "github.com/savalin/gonum/graph/internal/set"
+import (
+	"fmt"
+	"github.com/savalin/gonum/graph/internal/set"
+)
 
 // Max is the maximum value of int64.
 const Max = int64(^uint64(0) >> 1)
@@ -51,4 +54,20 @@ func (s *Set) Use(id int64) {
 func (s *Set) Release(id int64) {
 	s.free.Add(id)
 	s.used.Remove(id)
+}
+
+func (s *Set) Flush() {
+	if s == nil {
+		return
+	}
+	for k := range s.used {
+		s.used.Remove(k)
+	}
+	for k := range s.free {
+		s.free.Remove(k)
+	}
+	s.used = nil
+	s.free = nil
+
+	fmt.Println("Set.Flush()")
 }
