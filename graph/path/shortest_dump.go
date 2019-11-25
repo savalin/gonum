@@ -18,10 +18,10 @@ func NewAllShortestByDump(dump []byte) (AllShortest, error) {
 	return v1Marshaler.Unmarshal(dump)
 }
 
-func (g *AllShortest) Marshal() ([]byte, error) {
+func (p *AllShortest) Marshal() ([]byte, error) {
 	var v1Marshaler = &allShortestDumperV1{}
 
-	return v1Marshaler.Marshal(g)
+	return v1Marshaler.Marshal(p)
 }
 
 const allShortestDumperVersion1 = 1
