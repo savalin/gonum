@@ -3,11 +3,10 @@ sudo: false
 language: go
 
 # Do not move these lines; they are referred to by README.md.
-# Versions of go that are explicitly supported by gonum plus go tip.
+# Versions of go that are explicitly supported by Gonum, plus Go tip.
 go:
+ - 1.13.x
  - 1.12.x
- - 1.11.x
- - 1.10.x
  - master
 
 os:
@@ -32,71 +31,34 @@ cache:
 
 git:
  depth: 1
+ autocrlf: input
 
 matrix:
  fast_finish: true
  exclude:
   - os: osx
-    go: 1.12.x
     env: TAGS="-tags bounds"
   - os: osx
-    go: 1.12.x
     env: TAGS="-tags noasm"
   - os: osx
-    go: 1.12.x
     env: TAGS="-tags appengine"
 
-  - os: osx
-    go: 1.11.x
-  - os: osx
-    go: 1.10.x
   - os: osx
     go: master
 
   - os: windows
-    go: 1.12.x
     env: TAGS="-tags bounds"
   - os: windows
-    go: 1.12.x
     env: TAGS="-tags noasm"
   - os: windows
-    go: 1.12.x
     env: TAGS="-tags appengine"
 
-  - os: windows
-    go: 1.11.x
-  - os: windows
-    go: 1.10.x
   - os: windows
     go: master
  allow_failures:
   - go: master
 
 before_install:
- # Make sure we have the origin master to compare HEADs and
- # save the sha for comparison in test-coverage.sh.
- # It is necessary to do this here since the rigmarole for
- # Windows loses the link to the real origin master.
- - git fetch --depth=1 origin master
- - export ORIGIN_MASTER=$(git ls-remote origin master | cut -f1)
-
- # This garbage is necessary because on windows, Travis 
- # helpfully sets core.autocrlf to true.
- #
- # The block here repeats the clone after having unset
- # core.autcrlf. There is no simple way to do this
- # conditionally on OS because windows will not allow
- # a file to be removed or moved while the file is open,
- # and we use constructed paths to scripts to get
- # conditional execution.
- #
- # Happy windowsing!
- - pushd ../../..
- - mv github.com/savalin/gonum .
- - git config --global core.autocrlf false
- - git clone gonum github.com/savalin/gonum
- - popd
-
  - ${TRAVIS_BUILD_DIR}/.travis/run-parts ${TRAVIS_BUILD_DIR}/.travis/deps.d/${TRAVIS_OS_NAME}
 
 addons:
@@ -104,7 +66,7 @@ addons:
     packages:
      - graphviz
 
-go_import_path: github.com/savalin/gonum
+go_import_path: gonum.org/v1/gonum
 
 # Get deps, build, test, and ensure the code is gofmt'ed.
 # If we are building as gonum, then we have access to the coveralls api key, so we can run coverage as well.

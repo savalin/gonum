@@ -3,8 +3,8 @@
 // license that can be found in the LICENSE file.
 
 // Package testgraph provides a set of testing helper functions
-// that test gonum graph interface implementations.
-package testgraph // import "github.com/savalin/gonum/graph/testgraph"
+// that test Gonum graph interface implementations.
+package testgraph // import "gonum.org/v1/gonum/graph/testgraph"
 
 import (
 	"fmt"
@@ -15,10 +15,10 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"github.com/savalin/gonum/graph"
-	"github.com/savalin/gonum/graph/internal/ordered"
-	"github.com/savalin/gonum/graph/internal/set"
-	"github.com/savalin/gonum/mat"
+	"gonum.org/v1/gonum/graph"
+	"gonum.org/v1/gonum/graph/internal/ordered"
+	"gonum.org/v1/gonum/graph/internal/set"
+	"gonum.org/v1/gonum/mat"
 )
 
 // BUG(kortschak): Edge equality is tested in part with reflect.DeepEqual and

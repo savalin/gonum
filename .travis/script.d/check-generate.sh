@@ -1,10 +1,11 @@
 #!/bin/bash
 
-go generate github.com/savalin/gonum/blas
-go generate github.com/savalin/gonum/blas/gonum
-go generate github.com/savalin/gonum/unit
-go generate github.com/savalin/gonum/unit/constant
-go generate github.com/savalin/gonum/graph/formats/dot
+go generate gonum.org/v1/gonum/blas
+go generate gonum.org/v1/gonum/blas/gonum
+go generate gonum.org/v1/gonum/unit
+go generate gonum.org/v1/gonum/unit/constant
+go generate gonum.org/v1/gonum/graph/formats/dot
+go generate gonum.org/v1/gonum/stat/card
 
 if [ -n "$(git diff)" ]; then	
 	git diff
