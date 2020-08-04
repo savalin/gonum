@@ -8,9 +8,9 @@ import (
 	"fmt"
 	"testing"
 
-	"gonum.org/v1/gonum/blas"
-	"gonum.org/v1/gonum/blas/blas64"
-	"gonum.org/v1/gonum/blas/testblas"
+	"github.com/savalin/gonum/blas"
+	"github.com/savalin/gonum/blas/blas64"
+	"github.com/savalin/gonum/blas/testblas"
 )
 
 var impl = c128{}

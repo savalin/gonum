@@ -7,9 +7,9 @@ package topo
 import (
 	"sort"
 
-	"gonum.org/v1/gonum/graph"
-	"gonum.org/v1/gonum/graph/internal/ordered"
-	"gonum.org/v1/gonum/graph/traverse"
+	"github.com/savalin/gonum/graph"
+	"github.com/savalin/gonum/graph/internal/ordered"
+	"github.com/savalin/gonum/graph/traverse"
 )
 
 // IsPathIn returns whether path is a path in g.

@@ -5,6 +5,7 @@
 package path
 
 import (
+	"context"
 	"math"
 
 	"golang.org/x/exp/rand"
@@ -45,7 +46,7 @@ func JohnsonAllPaths(g graph.Graph) (paths AllShortest, ok bool) {
 		return paths, false
 	}
 
-	dijkstraAllPaths(adjusted, paths)
+	dijkstraAllPaths(context.TODO(), adjusted, paths)
 
 	for i, u := range paths.nodes {
 		hu := adjusted.adjustBy.WeightTo(u.ID())

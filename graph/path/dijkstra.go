@@ -6,6 +6,7 @@ package path
 
 import (
 	"container/heap"
+	"context"
 
 	"github.com/savalin/gonum/graph"
 	"github.com/savalin/gonum/graph/traverse"
@@ -87,17 +88,17 @@ func DijkstraFrom(u graph.Node, g traverse.Graph) Shortest {
 // DijkstraAllPaths will panic if g has a negative edge weight.
 //
 // The time complexity of DijkstrAllPaths is O(|V|.|E|+|V|^2.log|V|).
-func DijkstraAllPaths(g graph.Graph) (paths AllShortest) {
+func DijkstraAllPaths(ctx context.Context, g graph.Graph) (paths AllShortest, err error) {
 	paths = newAllShortest(graph.NodesOf(g.Nodes()), false)
-	dijkstraAllPaths(g, paths)
-	return paths
+	err = dijkstraAllPaths(ctx, g, paths)
+	return paths, err
 }
 
 // dijkstraAllPaths is the all-paths implementation of Dijkstra. It is shared
 // between DijkstraAllPaths and JohnsonAllPaths to avoid repeated allocation
 // of the nodes slice and the indexOf map. It returns nothing, but stores the
 // result of the work in the paths parameter which is a reference type.
-func dijkstraAllPaths(g graph.Graph, paths AllShortest) {
+func dijkstraAllPaths(ctx context.Context, g graph.Graph, paths AllShortest) error {
 	var weight Weighting
 	if wg, ok := g.(graph.Weighted); ok {
 		weight = wg.Weight
@@ -113,6 +114,10 @@ func dijkstraAllPaths(g graph.Graph, paths AllShortest) {
 		// co-equal paths.
 		//
 		// http://www.cs.utexas.edu/ftp/techreports/tr07-54.pdf
+
+		if isAborted(ctx) {
+			return ctx.Err()
+		}
 
 		// Q must be empty at this point.
 		heap.Push(&Q, distanceNode{node: u, dist: 0})
@@ -143,6 +148,12 @@ func dijkstraAllPaths(g graph.Graph, paths AllShortest) {
 			}
 		}
 	}
+
+	if isAborted(ctx) {
+		return ctx.Err()
+	}
+
+	return nil
 }
 
 type distanceNode struct {
@@ -162,4 +173,15 @@ func (q *priorityQueue) Pop() interface{} {
 	var n interface{}
 	n, *q = t[len(t)-1], t[:len(t)-1]
 	return n
+}
+
+// context control
+func isAborted(ctx context.Context) bool {
+	select {
+	case <-ctx.Done():
+		return true
+	default:
+	}
+
+	return false
 }

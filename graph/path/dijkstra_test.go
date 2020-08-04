@@ -5,6 +5,7 @@
 package path
 
 import (
+	"context"
 	"math"
 	"reflect"
 	"sort"
@@ -115,7 +116,7 @@ func TestDijkstraAllPaths(t *testing.T) {
 			defer func() {
 				panicked = recover() != nil
 			}()
-			pt = DijkstraAllPaths(g.(graph.Graph))
+			pt, _ = DijkstraAllPaths(context.TODO(), g.(graph.Graph))
 		}()
 		if panicked || test.HasNegativeWeight {
 			if !test.HasNegativeWeight {

@@ -14,7 +14,7 @@ import (
 
 	"golang.org/x/exp/rand"
 
-	"gonum.org/v1/gonum/floats"
+	"github.com/savalin/gonum/floats"
 )
 
 // exact is an exact cardinality accumulator.

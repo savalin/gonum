@@ -5,6 +5,7 @@
 package path
 
 import (
+	"context"
 	"math"
 	"reflect"
 	"testing"
@@ -191,7 +192,7 @@ func TestExhaustiveAStar(t *testing.T) {
 		t.Fatalf("non-monotonic heuristic at edge:%v for goal:%v", edge, goal)
 	}
 
-	ps := DijkstraAllPaths(g)
+	ps, _ := DijkstraAllPaths(context.TODO(), g)
 	for _, start := range graph.NodesOf(g.Nodes()) {
 		for _, goal := range graph.NodesOf(g.Nodes()) {
 			pt, _ := AStar(start, goal, g, heuristic)
